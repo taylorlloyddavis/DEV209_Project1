@@ -30,4 +30,11 @@ router.get('/getAllMovies', function(req, res) {
   res.status(200).json(serverArray);
 });
 
+/*Add one new Artist*/
+router.post('/AddMusic', function(req, res){
+  const newMusic = req.body;
+  serverArray.push(newMusic);
+  res.status(200).json(newMusic);
+});
+
 module.exports = router;

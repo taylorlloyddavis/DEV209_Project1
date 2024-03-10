@@ -25,13 +25,30 @@ document.addEventListener("DOMContentLoaded", function () {
 // add button events ************************************************************************
     
     document.getElementById("buttonAdd").addEventListener("click", function () {
-        movieArray.push(new MovieObject(document.getElementById("artist").value, 
+        let newMusic = new MovieObject(document.getElementById("artist").value, 
         document.getElementById("year").value,
         selectedGenre,
         document.getElementById("album").value,
-        document.getElementById("URL").value));
-        document.location.href = "index.html#ListAll";
+        document.getElementById("URL").value);
+        //document.location.href = "index.html#ListAll";
         // also add the URL value
+
+
+    //push new object to server//
+    $.ajax({
+        url: "/AddMusic",
+        type: "POST",
+        data: JSON.stringify(newMusic),
+        contentType: "application/json; charset=utf-8",
+        success: function (result) {
+            console.log(result);
+            document.location.href = "index.html#ListAll";
+        },
+    error: function (xhr, textStatus, errorThrown) {
+        alert("Server could not add Music: " + newMusic.Artist);
+        alert(textStatus + " " + errorThrown);
+    }
+    })
     });
     
     document.getElementById("buttonClear").addEventListener("click", function () {
@@ -81,11 +98,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // need one for our details page to fill in the info based on the passed in ID
     $(document).on("pagebeforeshow", "#details", function (event) {   
     let localID = localStorage.getItem('parm');  // get the unique key back from the dictionairy
+    movieArray = JSON.parse(localStorage.getItem('movieArray')); 
     let pointer = GetObjectPointer(localID);
+    console.log(pointer);
   
-    
-    // next step to avoid bug in jQuery Mobile,  force the movie array to be current
-    movieArray = JSON.parse(localStorage.getItem('movieArray'));  
+     
 
     
    
