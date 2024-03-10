@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Music</title>
+  <!-- <documentation at http://demos.jquerymobile.com/1.4.1/ > -->
+
+  <link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
+
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="javascripts/index.js"></script>
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+
+</head>
+
+<body>
+
+  <!-- Start of  page ------------------------------------------------------------------>
+  <div data-role="page" id="home">
+
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+      <h1>My Music</h1>
+<div data-role="navbar" data-theme='b'>
+  <ul>
+    <li><a href="#Load">Add Music</a></li>
+    <li><a href="#ListAll">List Music</a></li>
+  </ul>
+</div><!-- /navbar -->
+    </div>
+
+    <!--   page content -->
+    <div data-role="content" data-theme='b'>
+      <div class="newFont">
+        <h2> My Collection of Music</h2>
+        <h3>Use this app to store and rate music you love!</h3>
+        <img src="vinyl.jpg" alt="picture of vinyl">
+      </div>
+    </div>
+
+    <!--  page footer -->
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyright 2024 by Taylor Davis & Lorenzo Dacanay</h1>
+    </div>
+  </div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+<!-- Start of  page ------------------------------------------------------------------>
+  <div data-role="page" id="details">
+  
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+      <h1>Here are the details</h1>
+      <div data-role="navbar" data-theme='b'>
+        <ul>
+          <li><a href="#home">Home Page</a></li>
+          <li><a href="#Load">Add Music</a></li>
+          <li><a href="#ListAll">List Music</a></li>
+  
+        </ul>
+      </div><!-- /navbar -->
+    </div>
+  
+    <!--  content -->
+    <div data-role="content" data-theme='c'>
+      <p> Here are the details:</p>
+      <p id="oneArtist"></p>
+      <p id="oneYear"></p>
+      <p id="oneGenre"></p>
+      <p id="oneAlbum"></p>
+      <p id="oneURL" hidden></p>
+      <input type="button" value="Webpage" id="trailer" />
+    </div>
+  
+    <!--    footer -->
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyright 2024 by Taylor Davis & Lorenzo Dacanay</h1>
+    </div>
+  
+  </div>
+
+<!-- Start of  page ------------------------------------------------------------------>
+  <div data-role="page" id="Load">
+    <!--  page header -->
+    <div data-role="header" data-theme='a'>
+      <h1>Add Music</h1>
+      <div data-role="navbar" data-theme='b'>
+        <ul>
+          <li><a href="#home">Home Page</a></li>
+          <li><a href="#Load">Add Music</a></li>
+          <li><a href="#ListAll">List Music</a></li>
+        </ul>
+      </div><!-- /navbar -->
+
+    </div>
+
+
+
+
+    <!-- page content -->
+  
+    <div data-role="content" data-theme='c'>
+      <h2>Enter new Music</h2>
+      Enter Artist Name <br />
+      <input type="text" value="" id="artist" />
+      Enter Album Name <br />
+      <input type="text" value="" id="album" />
+      Enter Album Year <br />
+      <input type="text" value="" id="year" />
+      Enter Artist Webpage URL <br />
+      <input type="text" value="" id="URL" />
+      
+        <div class="ui-field-contain">
+          <label for="select-genre">Select a Genre</label>
+          <select name="select-genre" id="select-genre">
+            <option value="Rock">Rock</option>
+            <option value="Pop">Pop</option>
+            <option value="RB">R&B</option>
+            <option value="Classical">Classical</option>
+            <option value="HipHop">Hip-Hop</option>
+            <option value="Metal">Metal</option>
+            <option value="Country">Country</option>
+          </select>
+        </div>
+    
+    
+      <input type="button" value="Click To Add Music" id="buttonAdd" data-inline="true" />
+      <input type="button" value="Clear Data" id="buttonClear" data-inline="true" />
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    <!--   page footer -->
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyright 2024 by Taylor Davis & Lorenzo Dacanay</h1>
+    </div>
+  </div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+
+<!-- Start of  page ------------------------------------------------------------------>
+  <div data-role="page" id="ListAll">
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+      <h1>My Music List</h1>
+      <div data-role="navbar" data-theme='b'>
+        <ul>
+          <li><a href="#home">Home Page</a></li>
+          <li><a href="#Load">Add Music</a></li>
+          <li><a href="#ListAll">List Music</a></li>
+        </ul>
+      </div><!-- /navbar -->
+
+    </div>
+    <!--   page content -->
+    <div data-role="content" data-theme='e'>
+      <p> Here is my Music</p>
+      <div>
+        <ul id="MovieListul"></ul>
+      </div>
+    
+      <input type="button" value="Sort By Genre" id="buttonSortGenre" data-inline="true" />
+      <input type="button" value="Sort By Artist" id="buttonSortTitle" data-inline="true" />
+    </div>
+
+
+    <!--   page footer -->
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyright 2024 by Taylor Davis & Lorenzo Dacanay</h1>
+    </div>
+  </div>
+  </div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+
+</body>
+
+</html>
