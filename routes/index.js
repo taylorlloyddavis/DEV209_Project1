@@ -15,9 +15,41 @@ let MovieObject = function (pArtist, pYear, pGenre, pAlbum, pURL) {
 }
 
 
+var fs = require("fs");
+
+let fileManager  = {
+  read: function() {
+    var rawdata = fs.readFileSync('objectdata.json');
+    let goodData = JSON.parse(rawdata);
+    serverArray = goodData;
+  },
+
+  write: function() {
+    let data = JSON.stringify(serverArray);
+    fs.writeFileSync('objectdata.json', data);
+  },
+
+  validData: function() {
+    var rawdata = fs.readFileSync('objectdata.json');
+    console.log(rawdata.length);
+    if(rawdata.length < 1) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+};
+
+
+if(!fileManager.validData()) {
 serverArray.push(new MovieObject("Nirvana", 1991, "Rock", "Nevermind", "https://www.nirvana.com/#/"));
 serverArray.push(new MovieObject("Third Eye Blind", 1997, "Rock", "Self Titled", "https://www.thirdeyeblind.com/"));
-
+fileManager.write();
+}
+else {
+  fileManager.read(); // do have prior movies so load up the array
+}
 console.log(serverArray);
 
 /*Get home page. */
@@ -27,6 +59,7 @@ router.get('/', function(req, res, next){
 
 /* GET all Music data */
 router.get('/getAllMovies', function(req, res) {
+  fileManager.read();
   res.status(200).json(serverArray);
 });
 
@@ -34,6 +67,7 @@ router.get('/getAllMovies', function(req, res) {
 router.post('/AddMusic', function(req, res){
   const newMusic = req.body;
   serverArray.push(newMusic);
+  fileManager.write();
   res.status(200).json(newMusic);
 });
 

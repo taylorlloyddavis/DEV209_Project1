@@ -47,8 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
     error: function (xhr, textStatus, errorThrown) {
         alert("Server could not add Music: " + newMusic.Artist);
         alert(textStatus + " " + errorThrown);
-    }
-    })
+        }
+    });
+
     });
     
     document.getElementById("buttonClear").addEventListener("click", function () {
@@ -144,7 +145,7 @@ function createList() {
     // use the html5 "data-parm" to encode the ID of this particular data object
     // that we are building an li from
     myLi.setAttribute("data-parm", oneMovie.ID);
-    myLi.innerHTML = oneMovie.ID + ":  " + oneMovie.Artist + "  " + oneMovie.Genre;
+    myLi.innerHTML = oneMovie.ID + ":  " + oneMovie.Artist + ", " + oneMovie.Genre;
     myUL.appendChild(myLi);
    
     });
